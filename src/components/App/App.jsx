@@ -2,6 +2,7 @@ import React from "react";
 import PhysicianList from "./../PhysicianList";
 import axios from "axios";
 import AppointmentList from "./../AppointmentList";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends React.Component {
     };
     this.getPhysicians = this.getPhysicians.bind(this);
     this.getAppointmentsByPhysId = this.getAppointmentsByPhysId.bind(this);
+    this.updateApptsOnClick = this.updateApptsOnClick.bind(this);
   }
   componentDidMount() {
     this.getPhysicians();
@@ -22,7 +24,6 @@ class App extends React.Component {
     axios
       .get("/physicians")
       .then(physicians => {
-        console.log(physicians.data);
         this.setState({
           physicians: physicians.data
         });
@@ -35,10 +36,11 @@ class App extends React.Component {
   getAppointmentsByPhysId(id) {
     axios
       .get(`/appointments/${id}`)
-      .then(appointments => {
-        console.log(appointments.data);
+      .then(appts => {
         this.setState({
-          appointments: appointments.data
+          appointments: appts.data.patientList,
+          currPhysFullName: `${appts.data.firstName} ${appts.data.lastName}`,
+          currPhysEmail: appts.data.email
         });
       })
       .catch(err => {
@@ -46,17 +48,31 @@ class App extends React.Component {
       });
   }
 
+  updateApptsOnClick(e, id) {
+    e.preventDefault();
+    this.getAppointmentsByPhysId(id);
+  }
+
   render() {
+    const {
+      physicians,
+      currPhysFullName,
+      currPhysEmail,
+      appointments
+    } = this.state;
     return (
-      <div>
-        <header>Notable</header>
+      <div className="wrapper">
         <section>
-          <PhysicianList physicians={this.state.physicians} />
+          <PhysicianList
+            physicians={physicians}
+            updateApptsOnClick={this.updateApptsOnClick}
+          />
         </section>
         <aside>
-          <AppointmentList appointments={this.state.appointments} />
+          <header className="drHeader">Dr. {currPhysFullName}</header>
+          <div className="email">{currPhysEmail}</div>
+          <AppointmentList appointments={appointments} />
         </aside>
-        <div>after list</div>
       </div>
     );
   }

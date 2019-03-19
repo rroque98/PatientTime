@@ -1,0 +1,35 @@
+:root {
+  --lightGrey: #e8eaf3b6;
+  --veryLightGrey: #eeeff5b6;
+  --notableBlue: #0073e6;
+  --white: #fff;
+  --black: #000;
+  --darkGrey: #5f5d5db6;
+}
+
+.wrapper {
+  display: grid;
+  margin: 1%;
+}
+
+section {
+  background-color: var(--lightGrey);
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding: 1em;
+}
+aside {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  padding: 1em;
+}
+
+.drHeader {
+  font-size: 2em;
+  font-weight: 800;
+  padding: 0.25em 0 0 0;
+}
+
+.email {
+  padding: 0.5em 0 1em 0;
+}
