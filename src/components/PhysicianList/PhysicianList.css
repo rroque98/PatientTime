@@ -1,0 +1,38 @@
+.notableHeader {
+  color: var(--notableBlue);
+  font-size: 2em;
+  font-weight: 600;
+}
+.physListHeader {
+  font-size: 1em;
+  font-weight: 600;
+  padding: 1em 0 0 0;
+}
+
+li {
+  list-style-type: circle;
+}
+
+ul li {
+  color: var(--darkGrey);
+}
+
+ul li span {
+  color: var(--black);
+}
+
+button {
+  display: block;
+  margin: auto;
+  padding: 1em;
+  background: var(--notableBlue);
+  color: var(--white);
+  border-radius: 6px;
+  text-align: center;
+  outline: none;
+  font-size: 1em;
+}
+
+button:hover {
+  background: var(--darkBlue);
+}

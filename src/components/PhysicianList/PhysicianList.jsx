@@ -1,22 +1,25 @@
 import React from "react";
+import "./PhysicianList.css";
 
 const PhysicianList = ({ physicians, updateApptsOnClick }) => {
   return (
-    <div>
-      <h1>Notable</h1>
-      <h3>Physicians</h3>
+    <React.Fragment>
+      <header className="notableHeader">notable</header>
+      <div className="physListHeader">Physicians</div>
       <ul>
         {physicians.map(physician => (
           <li
             key={physician.id}
             onClick={e => updateApptsOnClick(e, physician.id)}
           >
-            {physician.lastName}, {physician.firstName}
+            <span>
+              {physician.lastName}, {physician.firstName}
+            </span>
           </li>
         ))}
       </ul>
       <button>Logout</button>
-    </div>
+    </React.Fragment>
   );
 };
 
