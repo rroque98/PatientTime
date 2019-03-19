@@ -2,6 +2,7 @@ import React from "react";
 
 const AppointmentList = ({ appointments }) => {
   let count = 0;
+  console.log(appointments);
   return (
     <table>
       <thead>
