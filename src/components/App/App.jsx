@@ -9,11 +9,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       physicians: [],
-      appointments: []
+      appointments: [],
+      currPhysId: 1
     };
     this.getPhysicians = this.getPhysicians.bind(this);
     this.getAppointmentsByPhysId = this.getAppointmentsByPhysId.bind(this);
     this.updateApptsOnClick = this.updateApptsOnClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
   componentDidMount() {
     this.getPhysicians();
@@ -37,10 +39,13 @@ class App extends React.Component {
     axios
       .get(`/appointments/${id}`)
       .then(appts => {
+        console.log(appts.data);
         this.setState({
-          appointments: appts.data.patientList,
-          currPhysFullName: `${appts.data.firstName} ${appts.data.lastName}`,
-          currPhysEmail: appts.data.email
+          appointments: appts.data,
+          currPhysFullName: `${appts.data[0].firstName} ${
+            appts.data[0].lastName
+          }`,
+          currPhysEmail: appts.data[0].email
         });
       })
       .catch(err => {
@@ -50,7 +55,15 @@ class App extends React.Component {
 
   updateApptsOnClick(e, id) {
     e.preventDefault();
+    this.setState({
+      currPhysId: id
+    });
     this.getAppointmentsByPhysId(id);
+  }
+
+  handleLogoutClick(e) {
+    e.preventDefault();
+    alert("Logged out successfully!");
   }
 
   render() {
@@ -58,7 +71,8 @@ class App extends React.Component {
       physicians,
       currPhysFullName,
       currPhysEmail,
-      appointments
+      appointments,
+      currPhysId
     } = this.state;
     return (
       <div className="wrapper">
@@ -66,6 +80,8 @@ class App extends React.Component {
           <PhysicianList
             physicians={physicians}
             updateApptsOnClick={this.updateApptsOnClick}
+            handleLogoutClick={this.handleLogoutClick}
+            currPhysId={currPhysId}
           />
         </section>
         <aside>
