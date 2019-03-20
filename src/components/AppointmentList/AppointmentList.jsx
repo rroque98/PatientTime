@@ -3,8 +3,7 @@ import "./AppointmentList.css";
 
 const AppointmentList = ({ appointments }) => {
   let count = 0;
-  console.log(appointments);
-  return (
+  return appointments.length ? (
     <table>
       <thead>
         <tr>
@@ -28,7 +27,7 @@ const AppointmentList = ({ appointments }) => {
         })}
       </tbody>
     </table>
-  );
+  ) : null;
 };
 
 export default AppointmentList;
