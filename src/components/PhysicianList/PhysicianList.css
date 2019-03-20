@@ -2,18 +2,20 @@
   color: var(--notableBlue);
   font-size: 2em;
   font-weight: 600;
+  padding: 0.5em;
 }
 .physListHeader {
   font-size: 1em;
   font-weight: 600;
-  padding: 1em 0 0 0;
+  padding: 1em 1em 0 1em;
 }
 
 li {
   list-style-type: circle;
+  margin: 0.5em 0;
 }
 
-ul li {
+.physList {
   color: var(--darkGrey);
 }
 

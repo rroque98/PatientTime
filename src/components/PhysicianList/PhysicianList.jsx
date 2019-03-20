@@ -8,7 +8,7 @@ const PhysicianList = ({
   handleLogoutClick,
   currPhysId
 }) => {
-  return (
+  return physicians.length ? (
     <React.Fragment>
       <header className="notableHeader">notable</header>
       <div className="physListHeader">PHYSICIANS</div>
@@ -24,7 +24,7 @@ const PhysicianList = ({
       </ul>
       <button onClick={handleLogoutClick}>Logout</button>
     </React.Fragment>
-  );
+  ) : null;
 };
 
 export default PhysicianList;
