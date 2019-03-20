@@ -1,0 +1,9 @@
+ul {
+  padding: 0 0 0 2em;
+}
+
+.physician span {
+  display: block;
+  background-color: var(--notableBlue);
+  color: var(--white);
+}
