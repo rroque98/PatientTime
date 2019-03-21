@@ -10,7 +10,9 @@ class App extends React.Component {
     this.state = {
       physicians: [],
       appointments: [],
-      currPhysId: 1
+      currPhysId: 1,
+      currPhysFullName: null,
+      currPhysEmail: null
     };
     this.getPhysicians = this.getPhysicians.bind(this);
     this.getAppointmentsByPhysId = this.getAppointmentsByPhysId.bind(this);
@@ -39,7 +41,17 @@ class App extends React.Component {
     axios
       .get(`/appointments/${id}`)
       .then(appts => {
-        console.log(appts.data);
+        appts.data.sort((a, b) => {
+          let timeA = Number(a.time.replace(":", "."));
+          let timeB = Number(b.time.replace(":", "."));
+          // Assuming office is not open past 7pm
+          if (timeA >= 1 && timeA < 7) {
+            timeA += 12;
+          } else if (timeB >= 1 && timeB < 7) {
+            timeB += 12;
+          }
+          return timeA < timeB ? -1 : 1;
+        });
         this.setState({
           appointments: appts.data,
           currPhysFullName: `${appts.data[0].firstName} ${
@@ -85,9 +97,11 @@ class App extends React.Component {
           />
         </section>
         <aside>
-          <header className="drHeader">Dr. {currPhysFullName}</header>
-          <div className="email">{currPhysEmail}</div>
-          <AppointmentList appointments={appointments} />
+          <AppointmentList
+            appointments={appointments}
+            currPhysFullName={currPhysFullName}
+            currPhysEmail={currPhysEmail}
+          />
         </aside>
       </div>
     );

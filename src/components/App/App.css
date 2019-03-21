@@ -19,25 +19,19 @@ section {
   grid-row: 1 / 2;
   box-shadow: 1px 0 5px -2px var(--darkGrey);
 }
+
 aside {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   padding: 1em;
 }
 
-.drHeader {
-  font-size: 2em;
-  font-weight: 800;
-  padding: 0.25em 0 0 0;
-}
-
-.email {
-  padding: 0.5em 0 1em 0;
-}
-
 @media (max-width: 610px) {
   .wrapper {
     display: flex;
     flex-direction: column;
+  }
+  section {
+    box-shadow: 0 1px 2px -2px var(--darkGrey);
   }
 }
