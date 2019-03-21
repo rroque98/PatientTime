@@ -1,3 +1,7 @@
+ul {
+  padding: 0;
+}
+
 .notableHeader {
   color: var(--notableBlue);
   font-size: 2em;
@@ -12,11 +16,13 @@
 
 li {
   list-style-type: circle;
-  margin: 0.5em 0;
+  line-height: 2em;
 }
 
 .physList {
   color: var(--darkGrey);
+  list-style-position: inside;
+  text-indent: 1em;
 }
 
 ul li span {
@@ -25,14 +31,15 @@ ul li span {
 
 button {
   display: block;
-  margin: auto;
-  padding: 1em;
+  margin: 0 auto 1em auto;
+  padding: 0.5em 1em;
   background: var(--notableBlue);
   color: var(--white);
   border-radius: 6px;
   text-align: center;
   outline: none;
   font-size: 1em;
+  font-weight: 600;
 }
 
 button:hover {
