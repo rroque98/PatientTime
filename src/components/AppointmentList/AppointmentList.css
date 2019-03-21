@@ -1,3 +1,13 @@
+.drHeader {
+  font-size: 2em;
+  font-weight: 800;
+  padding: 1em 0 0 0;
+}
+
+.email {
+  padding: 0 0 1em 0;
+}
+
 table {
   border-collapse: collapse;
   padding: 0.5em 0 0 0;
