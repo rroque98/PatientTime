@@ -3,12 +3,21 @@
 exports[`Physician snapshot 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c0 {
+  list-style-type: circle;
+  line-height: 2em;
+  list-style-position: inside;
+  text-indent: 1em;
+}
+
+<body>
     <div>
       <li
-        class=""
+        class="c0"
       >
-        <span>
+        <span
+          class=""
+        >
           , 
         </span>
       </li>
@@ -16,9 +25,11 @@ Object {
   </body>,
   "container": <div>
     <li
-      class=""
+      class="sc-bdVaJa gVmRUz"
     >
-      <span>
+      <span
+        class="sc-bwzfXH jivAqU"
+      >
         , 
       </span>
     </li>
@@ -84,3 +95,5 @@ Object {
   "unmount": [Function],
 }
 `;
+
+exports[`Physician snapshot 2`] = `undefined`;
