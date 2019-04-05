@@ -6,19 +6,27 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="wrapper"
+        class="sc-VigVT icImsO"
       >
-        <section />
-        <aside />
+        <section
+          class="sc-jTzLTM ykucR"
+        />
+        <aside
+          class="sc-fjdhpX fxnGJt"
+        />
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="wrapper"
+      class="sc-VigVT icImsO"
     >
-      <section />
-      <aside />
+      <section
+        class="sc-jTzLTM ykucR"
+      />
+      <aside
+        class="sc-fjdhpX fxnGJt"
+      />
     </div>
   </div>,
   "debug": [Function],

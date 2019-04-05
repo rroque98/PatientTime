@@ -2,7 +2,42 @@ import React from "react";
 import PhysicianList from "./../PhysicianList";
 import axios from "axios";
 import AppointmentList from "./../AppointmentList";
-import "./App.css";
+import styled, { ThemeProvider } from "styled-components";
+
+const theme = {
+  lightGrey: "#e8eaf3b6",
+  veryLightGrey: "#eeeff5b6",
+  notableBlue: "#0073e6",
+  white: "#fff",
+  black: "#000",
+  darkGrey: "#5f5d5db6",
+  darkBlue: "#0267cc"
+};
+
+const Wrapper = styled.div`
+  display: grid;
+  margin: 1%;
+  @media (max-width: 610px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const PhysListSection = styled.section`
+  background: ${props => props.theme.lightGrey};
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  box-shadow: 1px 0 5px -2px ${props => props.theme.darkGrey};
+  @media (max-width: 610px) {
+    box-shadow: 0 1px 2px -2px ${props => props.theme.darkGrey};
+  }
+`;
+
+const ApptListSection = styled.aside`
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  padding: 1em;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +54,7 @@ class App extends React.Component {
     this.updateApptsOnClick = this.updateApptsOnClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
+
   componentDidMount() {
     this.getPhysicians();
     this.getAppointmentsByPhysId(1);
@@ -87,23 +123,25 @@ class App extends React.Component {
       currPhysId
     } = this.state;
     return (
-      <div className="wrapper">
-        <section>
-          <PhysicianList
-            physicians={physicians}
-            updateApptsOnClick={this.updateApptsOnClick}
-            handleLogoutClick={this.handleLogoutClick}
-            currPhysId={currPhysId}
-          />
-        </section>
-        <aside>
-          <AppointmentList
-            appointments={appointments}
-            currPhysFullName={currPhysFullName}
-            currPhysEmail={currPhysEmail}
-          />
-        </aside>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          <PhysListSection>
+            <PhysicianList
+              physicians={physicians}
+              updateApptsOnClick={this.updateApptsOnClick}
+              handleLogoutClick={this.handleLogoutClick}
+              currPhysId={currPhysId}
+            />
+          </PhysListSection>
+          <ApptListSection>
+            <AppointmentList
+              appointments={appointments}
+              currPhysFullName={currPhysFullName}
+              currPhysEmail={currPhysEmail}
+            />
+          </ApptListSection>
+        </Wrapper>
+      </ThemeProvider>
     );
   }
 }
